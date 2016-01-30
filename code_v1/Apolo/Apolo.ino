@@ -12,13 +12,16 @@
 #define WIFI_PASSPHARSE  ""
 
 WiFiConnector wifi;
+void processWifi();
 //---- dht11 library ---
 #include "DHT.h"
-#define HUMIDER D12
-#define DHTPIN D13
+#define HUMIDER D1
+#define DHTPIN D6
+#define BUZZER D5
 #define DHTTYPE DHT21 //DHT22 DHT21
 DHT dht(DHTPIN, DHTTYPE);
 float humidity,temperature;
+void processDHT();
 //---- Server 
 #include <ArduinoJson.h>
 
@@ -32,6 +35,8 @@ StaticJsonBuffer<320> jsonBuffer;
 #include <BlynkSimpleEsp8266.h>
 char auth[] = "e470c185a1ff42b6a66c908a94144c40";
 SimpleTimer timer;
+
+
 //================================//
 void init_dht()
 {
